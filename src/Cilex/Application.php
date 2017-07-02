@@ -88,6 +88,9 @@ class Application extends Container
             if ($provider instanceof EventListenerProviderInterface) {
                 $provider->subscribe($this, $this['dispatcher']);
             }
+	        if ($provider instanceof BootableProviderInterface) {
+		        $provider->boot($this);
+	        }
         }
     }
 
